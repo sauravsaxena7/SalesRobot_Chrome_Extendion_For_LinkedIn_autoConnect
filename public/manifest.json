@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn Auto Connect",
+  "description": "Automatically clicks all 'Connect' buttons available on LinkedIn 'Search People' and 'People You May Know' pages.",
+  "version": "0.0.1",
+  "permissions": [
+    "scripting",
+    "storage","activeTab","tabs"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+ 
+  "host_permissions": ["*://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.linkedin.com/search/results/people/*",
+        "https://*.linkedin.com/mynetwork/*"
+      ], 
+      "js": [
+        "contentScript.js"
+        
+      ]
+    }
+  ],
+  "icons": {
+    "48": "linkedin64.png",
+    "128": "linkedin128.png"
+  }
+}
+
